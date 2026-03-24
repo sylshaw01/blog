@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Syl&#39;s blog :)</title>
-    <link>http://localhost:1313/</link>
+    <link>https://www.sylviashaw.com/</link>
     <description>Recent content on Syl&#39;s blog :)</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 23 Mar 2026 23:20:31 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.sylviashaw.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Blog</title>
-      <link>http://localhost:1313/posts/blog/</link>
+      <link>https://www.sylviashaw.com/posts/blog/</link>
       <pubDate>Mon, 23 Mar 2026 23:20:31 +0000</pubDate>
-      <guid>http://localhost:1313/posts/blog/</guid>
+      <guid>https://www.sylviashaw.com/posts/blog/</guid>
       <description>&lt;h1 id=&#34;hi&#34;&gt;Hi&lt;/h1&gt;&#xA;&lt;p&gt;I have wanted to make a blog for years and years, so&amp;hellip; thought I should at least post something and try :)&lt;/p&gt;&#xA;&lt;p&gt;For a long time I feel a hesitancy to public blog-posting. I hold a fear that if people were to see the things that I struggle on, they would realise how bad I am at whatever I happen to be doing. I definitely used to care less about what people thought of me, and so perhaps this is an exercise in shedding some imposter-syndrome type feelings that have been building up.&lt;/p&gt;</description>
     </item>
   </channel>
