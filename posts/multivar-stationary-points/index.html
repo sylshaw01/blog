@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '$', right: '$', display: false}
+    ]
+  });"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/site.webmanifest">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Why should I care about the determinant of the Hessian? | Syl&#39;s blog :)</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+    
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <ul>
+          
+          
+          <li class="pull-left ">
+            <a href="http://localhost:1313/">~/syl&#39;s blog :)</a>
+          </li>
+          
+
+          
+
+        </ul>
+      </nav>
+    </header>
+
+
+<div class="article-meta">
+<h1><span class="title">Why should I care about the determinant of the Hessian?</span></h1>
+
+<h2 class="date">2026/03/26</h2>
+<p class="terms">
+  
+  
+  
+  
+  
+</p>
+</div>
+
+
+
+<div class="content-wrapper">
+  <main>
+    <h1 id="multivariable-optimisation-from-the-ground-up">Multivariable optimisation from the ground up</h1>
+<p>Lets say we want to find the maximum or minimum of a function $f(x,y)$. How do we do that, and how do we prove it? In the single variable case, we look at the derivative and then work out when that is equal to 0. Multidimensional stuff can be a little bit messier, so I want to work at it from the ground up. First lets assume that we have a stationary point, and for ease let that stationary point be $0$. The stationary point can just be found from partial first-derivatives. What we want to understand is how to tell if it is a minima, maxima, or something else. Let&rsquo;s first work by expanding out $f$ to second order
+</p>
+$$
+\begin{aligned}
+    f(v_1,v_2) &\approx f(0,0) +v_1\cdot f_x(0,0) + v_2 \cdot f_y(0,0) \\&+ \frac{1}{2}v_1^2f_{xx}(0,0) + \frac{1}{2}v_1v_2f_{xy}(0,0) + \frac{1}{2}v_2v_1f_{yx}(0,0) + \frac{1}{2}v_2^2f_{yy}(0,0) + \dots.
+\end{aligned}
+$$<p>
+But, because we are at a stationary point, $f_x(0,0)$ and $f_y(0,0)$ are equal to zero. We can then write latter part can be written more succinctly as
+</p>
+$$
+    f(\mathbf{v}) \approx f(0,0) + \frac{1}{2}\mathbf{v}^TH\mathbf{v}
+$$<p>
+Where $H$ is the \textbf{Hessian} matrix. So far we have just manipulated an expansion, so now let&rsquo;s look at the change in $f$
+</p>
+$$
+    \Delta f = f(\mathbf{v}) - f(0) \approx \frac{1}{2}\mathbf{v}^TH\mathbf{v}.
+$$<p>
+Okay! This is the quadratic form involving $H$, the Hessian. So now lets find $\mathbf{v}$s which maximise and minimise $\mathbf{v}^TH\mathbf{v}$. Let&rsquo;s first take the derivative
+</p>
+$$
+    D_\mathbf{v}(\mathbf{v}^TH\mathbf{v}) = 2H\mathbf{v}.
+$$<p>
+Furthermore, to be able to compare our vectors $\mathbf{v}$, we will constrain them s.t. $||\mathbf{v}|| = 1$. This turns the problem into something amenable by Lagrange multipliers, and when phrased that way we get
+</p>
+$$
+    2H\mathbf{v} = 2\lambda\mathbf{v}
+$$<p>
+OMG! This is the eigenvalue equation. What does this tell us? The vectors $\mathbf{v}$ which maximise or minimise the quadratic form of the Hessian are its eigenvectors. Its eigenvalues are correspondingly the `steepness&rsquo; in that direction. Now from this we can infer some cool things. Firstly if both of the eigenvalues are positive, then the curvature is positive everywhere so the point is a minima, similarly if they are both negative, then it is a maxima. If they are of opposite sign, then we must be in a saddle point. The really neat thing here is that if we only wish to see if it is a saddle point or not, we don&rsquo;t actually need to work out the eigenvectors and eigenvalues themselves. All we need to do is work out the \textbf{determinant of the Hessian}, as it is already equal to the product of the eigenvalues. If it is positive, then it is an extrema, if it is negative, it is a saddle point. We can work out which kind of extrema it is from just the individual partial derivatives. e.g. if $\det(H) > 0$ and $f_{xx} > 0$, then also $f_{yy}>0$ and so it is a minima.</p>
+
+    <a href="/"> >> Home</a>
+  </main>
+</div>
+    <footer>
+      
+      
+      <script>
+      (function() {
+        function center_el(tagName) {
+          var tags = document.getElementsByTagName(tagName), i, tag;
+          for (i = 0; i < tags.length; i++) {
+            tag = tags[i];
+            var parent = tag.parentElement;
+            
+            if (parent.childNodes.length === 1) {
+              
+              if (parent.nodeName === 'A') {
+                parent = parent.parentElement;
+                if (parent.childNodes.length != 1) continue;
+              }
+              if (parent.nodeName === 'P') parent.style.textAlign = 'center';
+            }
+          }
+        }
+        var tagNames = ['img', 'embed', 'object'];
+        for (var i = 0; i < tagNames.length; i++) {
+          center_el(tagNames[i]);
+        }
+      })();
+      </script>
+
+      
+    </footer>
+  </body>
+</html>
+
